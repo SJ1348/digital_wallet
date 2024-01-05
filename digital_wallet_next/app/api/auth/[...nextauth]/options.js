@@ -6,6 +6,10 @@ export const options = {
       name: "Wallet Credentials",
 
       credentials: {
+        phone: {
+          label: "Phone",
+          type: "number",
+        },
         email: {
           label: "Email",
           type: "email",
@@ -13,7 +17,8 @@ export const options = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      //main code to check if user is present in db and if all three credentials are correct
+      async authorize(credentials) {
         const user = { username: credentials.email };
         console.log(credentials);
         if (user) {

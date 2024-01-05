@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  h1 {
+    font-weight: bold;
+    font-size: 1.875rem; /* equivalent to text-3xl in default configuration */
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
