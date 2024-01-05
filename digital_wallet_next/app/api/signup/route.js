@@ -8,8 +8,6 @@ export async function POST(req) {
   const phone = parseInt(body.phoneNumber);
   const password = body.password;
 
-  console.log(phone);
-
   //logic to add the user to the postgres db
 
   try {
