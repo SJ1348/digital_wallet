@@ -3,9 +3,8 @@
 import { getServerSession } from "next-auth";
 import { options } from "./api/auth/[...nextauth]/options";
 
-const session = await getServerSession(options);
-
-const ExampleSSC = () => {
+const ExampleSSC = async () => {
+  const session = await getServerSession(options);
   return (
     <div>
       <h1>Server-side Component</h1>
