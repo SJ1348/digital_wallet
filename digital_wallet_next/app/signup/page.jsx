@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export default function Signup() {
   const router = useRouter();
-  const [user, setUser] = React.useState({
+  const [user, setUser] = useState({
     email: "",
     password: "",
     phoneNumber: "",
@@ -60,15 +60,12 @@ export default function Signup() {
     try {
       setLoading(true);
       const response = await axios.post("/api/signup", user);
-      console.log("Signup success", response.data);
-      router.push("/api/auth/signin");
-    } catch (error) {
-      console.log("Signup failed", error.message);
-      const status = error.response.status;
-
-      if (status == 400) {
+      if (response.data.message == "User exists") {
         setUserExists(true);
+      } else {
+        router.push("/api/auth/signin");
       }
+    } catch (error) {
     } finally {
       setLoading(false);
     }
@@ -193,7 +190,7 @@ export default function Signup() {
 
         <Link
           className="text-blue-600 hover:text-blue-400 text-sm"
-          href="/login"
+          href="/api/auth/signin"
         >
           Already have an account?
         </Link>
