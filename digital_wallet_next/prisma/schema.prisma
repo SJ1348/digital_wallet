@@ -12,8 +12,11 @@ datasource db {
 }
 
 model User {
-  id          Int       @id @default(autoincrement())
-  email       String
-  password    String
-  phoneNumber BigInt
+  id              Int       @id @default(autoincrement())
+  email           String
+  password        String
+  phoneNumber     BigInt
+  accountNumbers  BigInt[]
 }
+
+

@@ -3,7 +3,8 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "phoneNumber" INTEGER NOT NULL,
+    "phoneNumber" BIGINT NOT NULL,
+    "accountNumbers" BIGINT[],
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

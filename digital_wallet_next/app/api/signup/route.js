@@ -18,19 +18,17 @@ export async function POST(req) {
     if (existingUser) {
       return NextResponse.json({ message: "User exists" });
     } else {
-      const newUser = await prisma.user.create({
+      await prisma.user.create({
         data: {
           email: email,
           password: password,
           phoneNumber: phone,
+          accountNumbers: [],
         },
       });
-
-      console.log("New user added:", newUser);
     }
     return NextResponse.status(201).json({ message: "User created" });
   } catch (error) {
-    console.error("Error adding user:", error);
     return NextResponse.json({ status: 500 });
   }
 }

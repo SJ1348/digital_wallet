@@ -29,8 +29,6 @@ export const options = {
           });
 
           if (user) {
-            console.log("Found user:", user);
-
             return user;
           } else {
             console.log("User not found");
@@ -45,11 +43,11 @@ export const options = {
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.role = user.role;
+      if (user) token.id = user.id;
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      if (session?.user) session.user.id = token.id;
       return session;
     },
   },
