@@ -1,6 +1,5 @@
 import { prisma } from "../../../prisma/index.js";
 import axios from "axios";
-import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -19,8 +18,18 @@ export async function POST(req) {
       }
     );
     if (accValidation.data.message == "Bank account and pin matches") {
-      const session = getServerSession();
-      const userId = session.user.id;
+      const userId = parseInt(body.id);
+
+      // Todo : check if account already added
+      const user = await prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+      });
+
+      if (user.accountNumbers.includes(BigInt(accountNumber))) {
+        return NextResponse.json({ message: "Account already added" });
+      }
 
       await prisma.user.update({
         where: {

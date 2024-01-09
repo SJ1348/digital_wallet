@@ -17,6 +17,7 @@ const Nav = async () => {
               <Link href="/transactionHistory">Transaction History</Link>
               <Link href="/bankBalance">View Bank Balance</Link>
               <Link href="/userProfile">User Profile</Link>
+              <Link href="/addAccount">Add Account</Link>
               <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
             </div>
           ) : (
