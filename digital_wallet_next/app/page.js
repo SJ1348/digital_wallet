@@ -6,7 +6,13 @@ const ExampleSSC = async () => {
   return (
     <div>
       <h1>Server-side Component</h1>
-      {session ? <p>Welcome</p> : <p>You are not logged in.</p>}
+      {session ? (
+        <div>
+          <p>Welcome</p>
+        </div>
+      ) : (
+        <p>You are not logged in.</p>
+      )}
     </div>
   );
 };

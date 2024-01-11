@@ -13,7 +13,7 @@ const Nav = async () => {
           {!session ? <Link href="/signup">Sign Up</Link> : <></>}
           {session ? (
             <div className="flex gap-10">
-              <Link href="/walletBalance">Wallet Balance</Link>
+              <Link href="/wallet">Wallet</Link>
               <Link href="/transactionHistory">Transaction History</Link>
               <Link href="/bankBalance">View Bank Balance</Link>
               <Link href="/userProfile">User Profile</Link>

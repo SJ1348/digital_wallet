@@ -24,6 +24,7 @@ export async function POST(req) {
           password: password,
           phoneNumber: phone,
           accountNumbers: [],
+          walletBalance: 0,
         },
       });
     }

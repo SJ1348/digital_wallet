@@ -17,6 +17,7 @@ model User {
   password        String
   phoneNumber     BigInt
   accountNumbers  BigInt[]
+  walletBalance   Int
 }
 
 
