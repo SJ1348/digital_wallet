@@ -1,16 +1,47 @@
-##Pages
+# Digital-Wallet
 
-- signup - new user
-- addAccount - link bank account to wallet
-- bankBalance - chack bank balance with pin
+# Frontend Pages
 
-- wallet - add money to wallet from bank,
+- URL : "/addAccount"
+- URL : "/bankBalance"
+- URL : "/signup"
+- URL : "/transactionHistory"
+- URL : "/userProfile"
+- URL : "/wallet"
 
-To-do
+# Backend APIs
 
-- transfer money from wallet to bank
-- transfer money to another wallet
+URL : "/api/addAccount"
 
-- transfer money from wallet to bank
+- METHOD : POST
+- BODY : { "id": Int, "accountNumber": Int, "pin": string }
+- RESPONSE : {message : ""}
+- ERROR :
 
-Backend routes -
+URL : "/api/bankBalance"
+
+- METHOD : POST
+- BODY : { "accountNumber": Int, "pin": string }
+- RESPONSE : {message : ""}
+- ERROR :
+
+URL : "/api/getAccounts"
+
+- METHOD : POST
+- BODY : { "id": Int }
+- RESPONSE : {accountNumbers: BigInt[]}
+- ERROR :
+
+URL : "/api/signup"
+
+- METHOD : POST
+- BODY : { "email": email, "phone": Int, "password": string }
+- RESPONSE : {message : ""}
+- ERROR :
+
+URL : "/api/updateWallet"
+
+- METHOD : POST
+- BODY : { "id": Int, "operation" : "debit"/"credit", "pin" : String, "amount" : Int, "accountNumber" : Int }
+- RESPONSE : {message : ""}
+- ERROR :
