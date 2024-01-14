@@ -29,5 +29,5 @@ export async function POST(req) {
     }
   );
 
-  return NextResponse.json({ balance: response.data.balance });
+  return NextResponse.json({ balance: response.data.balance }, { status: 200 });
 }

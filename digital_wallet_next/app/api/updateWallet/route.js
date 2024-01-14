@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../prisma/index.js";
 import axios from "axios";
 
-export async function POST(req) {
+export async function POST(req, res) {
   const body = await req.json();
 
   const operation = body.operation;
@@ -20,7 +20,10 @@ export async function POST(req) {
       pin: pin,
     });
   } catch (error) {
-    return NextResponse.json({ message: error.response.data.message });
+    return NextResponse.json(
+      { message: "Bank acc not updated" },
+      { status: 400 }
+    );
   }
 
   //updating the balance in the wallet
@@ -48,8 +51,11 @@ export async function POST(req) {
         },
       });
     }
-    return NextResponse.json({ message: "Updated wallet" });
+    return NextResponse.json({ message: "Wallet updated" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: error });
+    return NextResponse.json(
+      { message: "Wallet not updated" },
+      { status: 400 }
+    );
   }
 }

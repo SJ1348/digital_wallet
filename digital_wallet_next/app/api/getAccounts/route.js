@@ -11,9 +11,17 @@ export async function POST(req) {
     },
   });
 
-  const accountNumbers = user.accountNumbers.map((accNum) => {
-    return parseInt(accNum);
-  });
+  let accountNumbers;
 
-  return NextResponse.json({ accountNumbers });
+  if (user) {
+    accountNumbers = user.accountNumbers.map((accNum) => {
+      return parseInt(accNum);
+    });
+    return NextResponse.json({ accountNumbers }, { status: 200 });
+  } else {
+    return NextResponse.json(
+      { message: "No account numbers found" },
+      { status: 400 }
+    );
+  }
 }

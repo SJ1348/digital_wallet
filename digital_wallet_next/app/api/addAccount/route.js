@@ -28,7 +28,10 @@ export async function POST(req) {
       });
 
       if (user.accountNumbers.includes(BigInt(accountNumber))) {
-        return NextResponse.json({ message: "Account already added" });
+        return NextResponse.json(
+          { message: "Account already added" },
+          { status: 200 }
+        );
       }
 
       await prisma.user.update({
@@ -42,18 +45,25 @@ export async function POST(req) {
         },
       });
     }
-    return NextResponse.json({ message: "Bank account added successfully" });
+    return NextResponse.json(
+      { message: "Bank account added successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     if (error.response.data.message == "Invalid Credentials")
-      return NextResponse.json({
-        status: 401,
-        message: "Invalid Credentials",
-      });
+      return NextResponse.json(
+        {
+          status: 400,
+        },
+        { message: "Invalid Credentials" }
+      );
     else {
-      return NextResponse.json({
-        status: 401,
-        message: error.response.data.message,
-      });
+      return NextResponse.json(
+        {
+          status: 400,
+        },
+        { message: error.response.data.message }
+      );
     }
   }
 }

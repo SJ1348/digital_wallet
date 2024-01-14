@@ -28,8 +28,8 @@ export async function POST(req) {
         },
       });
     }
-    return NextResponse.status(201).json({ message: "User created" });
+    return NextResponse.json({ message: "User created" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ status: 500 });
+    return NextResponse.json({ message: "User not created" }, { status: 400 });
   }
 }

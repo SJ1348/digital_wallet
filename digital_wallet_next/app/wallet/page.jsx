@@ -24,13 +24,13 @@ const WalletBalance = () => {
     //send only id and pin from frontend, rest will be obained via db calls in the backend
 
     axios
-      .post("/api/addMoneyToWallet", {
+      .post("/api/updateWallet", {
         amount: user.amount,
         pin: user.pin,
         id: session.user.id,
       })
       .then((res) => {
-        console.log("DONE");
+        console.log(res);
       });
   };
 
