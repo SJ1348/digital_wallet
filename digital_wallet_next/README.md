@@ -23,7 +23,7 @@ URL : "/api/bankBalance"
 - METHOD : POST
 - BODY : { "accountNumber": Int, "pin": string }
 - RESPONSE : { balance: response.data.balance }
-- ERROR :
+- ERROR : { message: "Invalid Credentials" }
 
 URL : "/api/getAccounts"
 
@@ -50,5 +50,5 @@ URL : "/api/walletToWallet"
 
 - METHOD : POST
 - BODY : {"amount": Int, "password": String, "email": String", "id": Int}
-- RESPONSE : {message : "Amount deducted from senders Wallet and added to receivers wallet"}
-- ERROR : { message: "Senders and Receivers Wallet not updated" }
+- RESPONSE : {message : "Transaction successful"}
+- ERROR : { message: "Internal Server Error" }
