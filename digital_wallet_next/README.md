@@ -15,14 +15,14 @@ URL : "/api/addAccount"
 
 - METHOD : POST
 - BODY : { "id": Int, "accountNumber": Int, "pin": string }
-- RESPONSE : {message : ""}
-- ERROR :
+- RESPONSE : {message : "Bank account added successfully"}
+- ERROR : { message: "Invalid Credentials" }
 
 URL : "/api/bankBalance"
 
 - METHOD : POST
 - BODY : { "accountNumber": Int, "pin": string }
-- RESPONSE : {message : ""}
+- RESPONSE : { balance: response.data.balance }
 - ERROR :
 
 URL : "/api/getAccounts"
@@ -30,18 +30,25 @@ URL : "/api/getAccounts"
 - METHOD : POST
 - BODY : { "id": Int }
 - RESPONSE : {accountNumbers: BigInt[]}
-- ERROR :
+- ERROR : { message: "No account numbers found" }
 
 URL : "/api/signup"
 
 - METHOD : POST
 - BODY : { "email": email, "phone": Int, "password": string }
-- RESPONSE : {message : ""}
-- ERROR :
+- RESPONSE : {message : "User created"}
+- ERROR : { message: "User not created" }
 
 URL : "/api/updateWallet"
 
 - METHOD : POST
 - BODY : { "id": Int, "operation" : "debit"/"credit", "pin" : String, "amount" : Int, "accountNumber" : Int }
-- RESPONSE : {message : ""}
-- ERROR :
+- RESPONSE : {message : "Wallet updated"}
+- ERROR : { message: "Wallet not updated" }
+
+URL : "/api/walletToWallet"
+
+- METHOD : POST
+- BODY : {"amount": Int, "password": String, "email": String", "id": Int}
+- RESPONSE : {message : "Amount deducted from senders Wallet and added to receivers wallet"}
+- ERROR : { message: "Senders and Receivers Wallet not updated" }
